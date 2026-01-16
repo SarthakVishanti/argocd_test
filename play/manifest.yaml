@@ -35,17 +35,17 @@ spec:
     matchLabels:
       app: backend
   template:
-    customer: vishanti
-    ou: default-ou
-    project: default-project
-    region: SFO
-    scloud: Mycloud
-    zone: sfo-az1
-    sku: tiny
-    workload: pod
     metadata:
       labels:
         app: backend
+        customer: vishanti
+        ou: default-ou
+        project: default-project
+        region: SFO
+        scloud: Mycloud
+        zone: sfo-az1
+        sku: tiny
+        workload: pod
     spec:
       containers:
         - name: http-echo
