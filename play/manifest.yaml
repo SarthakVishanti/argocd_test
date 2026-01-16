@@ -36,6 +36,14 @@ spec:
       app: backend
   template:
     metadata:
+      customer: vishanti
+      ou: default-ou
+      project: default-project
+      region: SFO
+      scloud: Mycloud
+      zone: sfo-az1
+      sku: tiny
+      workload: pod
       labels:
         app: backend
     spec:
