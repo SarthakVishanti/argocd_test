@@ -37,6 +37,7 @@ spec:
   template:
     metadata:
       labels:
+        app: backend
     spec:
       containers:
         - name: http-echo
