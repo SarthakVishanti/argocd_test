@@ -33,3 +33,18 @@ spec:
         - name: martin-config
           configMap:
             name: martin-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: martin-service
+  namespace: gis
+spec:
+  type: Nodeport
+  selector:
+    app: martin
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      nodePort: 30080
