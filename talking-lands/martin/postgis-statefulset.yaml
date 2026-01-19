@@ -35,7 +35,7 @@ spec:
         name: data
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: class-bs-bronze-delete
+        storageClassName: local-path
         resources:
           requests:
             storage: 20Gi
