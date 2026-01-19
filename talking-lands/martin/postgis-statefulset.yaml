@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgis
+  namespace: gis
+spec:
+  serviceName: postgis
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgis
+  template:
+    metadata:
+      labels:
+        app: postgis
+    spec:
+      securityContext:
+        fsGroup: 999
+      containers:
+      - name: postgis
+        image: postgis/postgis:15-3.4
+        ports:
+          - containerPort: 5432
+        envFrom:
+          - secretRef:
+              name: postgis-secret
+        env:
+          - name: PGDATA
+            value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+          - name: data
+            mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: class-bs-bronze-delete
+        resources:
+          requests:
+            storage: 20Gi
+

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: martin-config
+  namespace: gis
+data:
+  config.yaml: |
+    postgres:
+      connection_string: "postgresql://gis:strongpassword@postgis.gis.svc.cluster.local:5432/gis"
+      default_srid: 4326
+      auto_publish:
+        schemas:
+          - public
+
+    http:
+      listen_addresses: "0.0.0.0:3000"
+
+    web_ui: true
+

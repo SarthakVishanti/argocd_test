@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: martin-config
+  namespace: gis
+data:
+  config.yaml: |
+    postgres:
+      connection_string: "postgresql://gis:strongpassword@postgis.gis.svc.cluster.local:5432/gis"
+      auto_publish:
+        from_subschemas:
+          - public
+      read_functions: true
+
+    server:
+      bind: "0.0.0.0:3000"
+      cache:
+        type: "memory"
+        max_size_mb: 512
+
+    web_ui: "enable-for-all"
+    logging:
+      level: "info"
