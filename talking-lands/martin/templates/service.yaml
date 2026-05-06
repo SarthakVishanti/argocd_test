@@ -4,9 +4,8 @@ metadata:
   name: postgis
   namespace: gis
 spec:
-  selector:
-    app: postgis
   ports:
     - port: 5432
       targetPort: 5432
-
+  selector:
+    app: postgis

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: martin
+  namespace: gis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: martin
+  template:
+    metadata:
+      labels:
+        app: martin
+    spec:
+      containers:
+        - name: martin
+          image: ghcr.io/maplibre/martin:latest
+          args:
+            - --config=/etc/martin/config.yaml
+            - --default-srid=4326
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: martin-config
+              mountPath: /etc/martin
+              readOnly: true
+      volumes:
+        - name: martin-config
+          configMap:
+            name: martin-config

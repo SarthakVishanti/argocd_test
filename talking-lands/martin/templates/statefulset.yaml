@@ -17,26 +17,26 @@ spec:
       securityContext:
         fsGroup: 999
       containers:
-      - name: postgis
-        image: postgis/postgis:15-3.4
-        ports:
-          - containerPort: 5432
-        envFrom:
-          - secretRef:
-              name: postgis-secret
-        env:
-          - name: PGDATA
-            value: /var/lib/postgresql/data/pgdata
-        volumeMounts:
-          - name: data
-            mountPath: /var/lib/postgresql/data
+        - name: postgis
+          image: postgis/postgis:15-3.4
+          ports:
+            - containerPort: 5432
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          envFrom:
+            - secretRef:
+                name: postgis-secret
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
         name: data
       spec:
-        accessModes: ["ReadWriteOnce"]
+        accessModes:
+          - ReadWriteOnce
         storageClassName: local-path
         resources:
           requests:
             storage: 20Gi
-
