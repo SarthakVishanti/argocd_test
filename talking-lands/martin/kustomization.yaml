@@ -7,6 +7,4 @@ resources:
   - postgis-statefulset.yaml
   - postgis-service.yaml
   - postgis-secret.yaml
-  - config.yaml
   - bkup-config.yaml
-  - bkup2-config.yaml
