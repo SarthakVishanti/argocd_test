@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespace.yaml
+  - martin-deployment.yaml
+  - postgis-statefulset.yaml
+  - postgis-service.yaml
+  - postgis-secret.yaml
+  - config.yaml
+  - bkup-config.yaml
+  - bkup2-config.yaml
